@@ -9,8 +9,17 @@ var CircularSlider = function() {
     radius: 0 
   };
 
+  var steps = 0;
+  var currentStep = 0;
+
+  var curveLength = 0;
+  var stepLength = 0;
+  var circleRadius = 0;
+
   var init = function(newOptions) {
     options = newOptions;
+
+    steps = Math.floor((options.max - options.min) / options.step);
   };
 
   return {
