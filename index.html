@@ -26,6 +26,29 @@
 
     <div id="sliders" class="sliders"></div>
 
+    <script src="circularSlider.js"></script>
+    <script>
+      var foodSlider = new CircularSlider().init({
+        label: "foodValue",
+        container: "sliders",
+        color: "#ec7927",
+        max: 50,
+        min: 12,
+        step: 4,
+        radius: 200
+      });
+
+      var carSlider = new CircularSlider().init({
+        label: "carValue",
+        container: "sliders",
+        color: "#0c9d1d",
+        max: 20,
+        min: 0,
+        step: 1,
+        radius: 170
+      });
+    </script>
+
     <style>
       .food .label::before {
         background-color: #ec7927;
