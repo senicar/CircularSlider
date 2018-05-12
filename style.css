@@ -1,0 +1,31 @@
+.legend,
+.sliders {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.legend {
+  min-height: 200px;
+  min-width: 100px;
+}
+
+.legend .label {
+  display: inline-block;
+}
+
+.legend .value {
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.legend .value::before {
+  content: "$";
+}
+
+.legend .label::before {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: .5em;
+  margin: 0 1em;
+}
