@@ -4,7 +4,7 @@
 
 http://htmlpreview.github.io/?https://github.com/senicar/CircularSlider/blob/master/index.html
 
-![screenshot](https://github.com/senicar/CircularSlider/blob/master/demo.png)
+[![screenshot](https://github.com/senicar/CircularSlider/blob/master/demo.png)](http://htmlpreview.github.io/?https://github.com/senicar/CircularSlider/blob/master/index.html)
 
 ## Usage
 
