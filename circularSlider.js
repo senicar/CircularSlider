@@ -97,7 +97,9 @@ var CircularSlider = function() {
     return svg;
   };
 
-  var setSliderStep = function(step) {
+  var setSliderStep = function() {
+    step = currentStep;
+
     var label = document.getElementById(options.label);
 
     if(label !== null) {
@@ -197,7 +199,7 @@ var CircularSlider = function() {
 
     var currentLength = (angle/360) * 2 * Math.PI * circleRadius;
     currentStep = getStepByCurveLength(currentLength);
-    setSliderStep(currentStep);
+    window.requestAnimationFrame(setSliderStep);
   };
 
   var init = function(newOptions) {
@@ -209,7 +211,8 @@ var CircularSlider = function() {
     svg.addEventListener("mousedown", handleMouseDown, false);
     svg.addEventListener("touchstart", handleTouchStart, false);
 
-    setSliderStep(0);
+    currentStep = 5;
+    setSliderStep();
     document.getElementById(options.container).appendChild(svg);
   };
 
