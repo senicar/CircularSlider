@@ -32,7 +32,7 @@ var CircularSlider = function() {
     var wh = options.radius*2;
     var colorFg = options.color;
 
-    var colorBg = "#cfcfd0";
+    var colorBg = "#bebebe";
     var colorDash = "#fff";
     var strokeWidth = 20;
     var holderOverflow = 2;

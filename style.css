@@ -1,7 +1,23 @@
+body {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f2f2f2+0,dbdbdb+100 */
+  background: #f2f2f2; /* Old browsers */
+  background: -moz-linear-gradient(top, #f2f2f2 0%, #dbdbdb 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #f2f2f2 0%,#dbdbdb 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #f2f2f2 0%,#dbdbdb 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#dbdbdb',GradientType=0 ); /* IE6-9 */
+  background-attachment: fixed;
+}
+
 .legend,
+.graph,
 .sliders {
   display: inline-block;
   vertical-align: middle;
+}
+
+.graph {
+  max-width: 100%;
+  overflow: visible;
 }
 
 .sliders {
@@ -10,6 +26,7 @@
   position: relative;
   margin: 0.5em 0;
   -webkit-backface-visibility: hidden;
+  margin: 2em 0;
 }
 
 .sliders svg {
@@ -46,4 +63,9 @@
   width: 1em;
   height: .5em;
   margin: 0 1em;
+}
+
+.instructions {
+  text-align: center;
+  font-style: italic;
 }
