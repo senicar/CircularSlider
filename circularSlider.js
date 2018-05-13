@@ -98,10 +98,16 @@ var CircularSlider = function() {
   };
 
   var setSliderStep = function(step) {
-    document.getElementById(options.label).innerHTML = options.min + (options.step * step);
+    var label = document.getElementById(options.label);
+
+    if(label !== null) {
+      label.innerHTML = options.min + (options.step * step);
+    }
 
     if(step == -1) {
-      document.getElementById(options.label).innerHTML = options.max;
+      if(label !== null) {
+        label.innerHTML = options.max;
+      }
       step = steps;
     }
 
