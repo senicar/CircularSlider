@@ -119,10 +119,10 @@ var CircularSlider = function() {
   var getStepByCurveLength = function(x) {
     var s = 0;
 
-    if(x > curveLength-10) {
+    if(x > curveLength-(stepLength*0.2)) {
       s = -1;
     }
-    else if(x > 10) {
+    else if(x > (stepLength*0.2)) {
       s = Math.floor(x / stepLength) + 1;
     }
 
@@ -137,20 +137,25 @@ var CircularSlider = function() {
 
   var handleEvent = function(event) {
     var angle = 0;
-    var pathBox = svg.childNodes[0].getBoundingClientRect();
     var svgBox = svg.getBoundingClientRect();
     var boxRadius = svgBox.width/2;
     var scale = boxRadius/options.radius;
-    var zeroOut = Math.abs(svgBox.left - pathBox.left);
-    var x = Math.floor(pathBox.left + zeroOut);
-    var y = Math.floor(pathBox.top + zeroOut);
+    var x = Math.floor(svgBox.left);
+    var y = Math.floor(svgBox.top);
+
+    var cX = event.clientX;
+    var cY = event.clientY;
+    if(window.TouchEvent && event instanceof TouchEvent) {
+      cX = event.touches[0].clientX;
+      cY = event.touches[0].clientY;
+    }
 
     var origin = new Point(x + boxRadius, y + boxRadius);
-    var target = new Point(event.clientX - origin.x, -1 * (event.clientY - origin.y));
+    var target = new Point(cX - origin.x, -1 * (cY - origin.y));
 
     var radians = Math.atan2(target.y, target.x) - Math.atan2(0, 1);
 
-    if (target.x < 0 & target.y > 0) {
+    if (target.x < 0 && target.y > 0) {
       angle = 450 - (radians * 180 / Math.PI);
     } else {
       angle = 90 - (radians * 180 / Math.PI);
