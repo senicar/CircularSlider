@@ -149,6 +149,28 @@ var CircularSlider = function() {
     document.body.removeEventListener("mouseup", handleMouseUp, false);
   };
 
+  var handleTouchStart = function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    svg.setAttribute('style', 'pointer-events: auto;');
+    svg.addEventListener("touchmove", handleEvent, false);
+
+    document.body.addEventListener("touchmove", function(e) {e.preventDefault();}, false);
+    document.body.addEventListener("touchend", handleTouchEnd, false);
+
+    handleEvent(event);
+  };
+
+  var handleTouchEnd = function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    svg.setAttribute('style', 'pointer-events: none;');
+    svg.removeEventListener("touchmove", handleEvent, false);
+
+    document.body.removeEventListener("touchmove", function(e) {e.preventDefault();}, false);
+    document.body.removeEventListener("touchend", handleTouchEnd, false);
+  };
+
   var handleEvent = function(event) {
     var angle = 0;
     var svgBox = svg.getBoundingClientRect();
@@ -187,6 +209,7 @@ var CircularSlider = function() {
     svg = buildGraph();
 
     svg.addEventListener("mousedown", handleMouseDown, false);
+    svg.addEventListener("touchstart", handleTouchStart, false);
 
     setSliderStep(0);
     document.getElementById(options.container).appendChild(svg);
