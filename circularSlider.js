@@ -153,9 +153,8 @@ var CircularSlider = function() {
     event.preventDefault();
     event.stopPropagation();
     svg.setAttribute('style', 'pointer-events: auto;');
-    svg.addEventListener("touchmove", handleEvent, false);
 
-    document.body.addEventListener("touchmove", function(e) {e.preventDefault();}, false);
+    document.body.addEventListener("touchmove", handleEvent, false);
     document.body.addEventListener("touchend", handleTouchEnd, false);
 
     handleEvent(event);
@@ -165,9 +164,8 @@ var CircularSlider = function() {
     event.preventDefault();
     event.stopPropagation();
     svg.setAttribute('style', 'pointer-events: none;');
-    svg.removeEventListener("touchmove", handleEvent, false);
 
-    document.body.removeEventListener("touchmove", function(e) {e.preventDefault();}, false);
+    document.body.removeEventListener("touchmove", handleEvent, false);
     document.body.removeEventListener("touchend", handleTouchEnd, false);
   };
 
