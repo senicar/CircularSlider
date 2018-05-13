@@ -23,6 +23,11 @@ var CircularSlider = function() {
   var stepLength = 0;
   var circleRadius = 0;
 
+  var Point = function(x,y) {
+    this.x = x;
+    this.y = y;
+  };
+
   var buildGraph = function() {
     var wh = options.radius*2;
     var colorFg = options.color;
@@ -92,12 +97,26 @@ var CircularSlider = function() {
     return svg;
   };
 
+  var setSliderStep = function(step) {
+    document.getElementById(options.label).innerHTML = options.min + (options.step * step);
+
+    if(step == -1) {
+      document.getElementById(options.label).innerHTML = options.max;
+      step = steps;
+    }
+
+    pathFg.setAttribute('stroke-dashoffset', stepLength * (steps - step));
+
+    pathHolder.setAttribute('transform','translate('+ (pathBg.getPointAtLength(stepLength * step).x) +','+ (pathBg.getPointAtLength(stepLength * step).y) +')');
+  };
+
   var init = function(newOptions) {
     options = newOptions;
 
     steps = Math.floor((options.max - options.min) / options.step);
     svg = buildGraph();
 
+    setSliderStep(0);
     document.getElementById(options.container).appendChild(svg);
   };
 
