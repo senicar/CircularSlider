@@ -136,10 +136,16 @@ var CircularSlider = function() {
   };
 
   var handleEvent = function(event) {
-    var x = Math.floor(svg.getBoundingClientRect().left);
-    var y = Math.floor(svg.getBoundingClientRect().top);
+    var angle = 0;
+    var pathBox = svg.childNodes[0].getBoundingClientRect();
+    var svgBox = svg.getBoundingClientRect();
+    var boxRadius = svgBox.width/2;
+    var scale = boxRadius/options.radius;
+    var zeroOut = Math.abs(svgBox.left - pathBox.left);
+    var x = Math.floor(pathBox.left + zeroOut);
+    var y = Math.floor(pathBox.top + zeroOut);
 
-    var origin = new Point(x + options.radius, y + options.radius);
+    var origin = new Point(x + boxRadius, y + boxRadius);
     var target = new Point(event.clientX - origin.x, -1 * (event.clientY - origin.y));
 
     var radians = Math.atan2(target.y, target.x) - Math.atan2(0, 1);
