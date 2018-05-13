@@ -7,15 +7,14 @@
 .sliders {
   height: 400px;
   width: 400px;
-  max-width: 100%;
   position: relative;
+  margin: 0.5em 0;
 }
 
 .sliders svg {
   position: absolute;
   top: 50%;
   left: 50%;
-  max-width: 100%;
   transform: translateX(-50%) translateY(-50%);
 }
 

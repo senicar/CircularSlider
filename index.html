@@ -92,6 +92,22 @@
         step: 1,
         radius: 80
       });
+
+      var sliders = document.getElementById('sliders');
+      var slidersInitialW = sliders.offsetWidth;
+      sliders.style.maxWidth = "100%";
+      var scaleSliders = function() {
+        var scale;
+        scale = Math.min(1, window.innerWidth / slidersInitialW);
+        sliders.style.transform = "scale(" + scale + ")";
+        sliders.style.height = sliders.offsetWidth + "px";
+      }
+
+      window.onresize = function(event) {
+        scaleSliders();
+      };
+
+     document.addEventListener("DOMContentLoaded", scaleSliders, false);
     </script>
 
     <style>
