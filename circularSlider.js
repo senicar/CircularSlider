@@ -129,10 +129,24 @@ var CircularSlider = function() {
     return s;
   };
 
-  var handleMouseClick = function(event) {
+  var handleMouseDown = function(event) {
     event.preventDefault();
     event.stopPropagation();
+    svg.setAttribute('style', 'pointer-events: auto;');
+
+    document.body.addEventListener("mousemove", handleEvent, false);
+    document.body.addEventListener("mouseup", handleMouseUp, false);
+
     handleEvent(event);
+  };
+
+  var handleMouseUp = function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    svg.setAttribute('style', 'pointer-events: none;');
+
+    document.body.removeEventListener("mousemove", handleEvent, false);
+    document.body.removeEventListener("mouseup", handleMouseUp, false);
   };
 
   var handleEvent = function(event) {
@@ -172,7 +186,7 @@ var CircularSlider = function() {
     steps = Math.floor((options.max - options.min) / options.step);
     svg = buildGraph();
 
-    svg.addEventListener("click", handleMouseClick, false);
+    svg.addEventListener("mousedown", handleMouseDown, false);
 
     setSliderStep(0);
     document.getElementById(options.container).appendChild(svg);
