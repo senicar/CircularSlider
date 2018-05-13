@@ -13,14 +13,29 @@
     <h1>Circular Slider</h1>
 
     <div class="legend">
+      <div class="transportation">
+        <span id="transportationValue" class="value"></span>
+        <span class="label">Transportation</span>
+      </div>
+
       <div class="food">
         <span id="foodValue" class="value"></span>
         <span class="label">Food</span>
       </div>
 
-      <div class="car">
-        <span id="carValue" class="value"></span>
-        <span class="label">Car</span>
+      <div class="insurance">
+        <span id="insuranceValue" class="value"></span>
+        <span class="label">Insurance</span>
+      </div>
+
+      <div class="entertainment">
+        <span id="entertainmentValue" class="value"></span>
+        <span class="label">Entertainment</span>
+      </div>
+
+      <div class="health">
+        <span id="healthValue" class="value"></span>
+        <span class="label">Health care</span>
       </div>
     </div>
 
@@ -28,34 +43,76 @@
 
     <script src="circularSlider.js"></script>
     <script>
-      var foodSlider = new CircularSlider().init({
-        label: "foodValue",
+      var transportationSlider = new CircularSlider().init({
+        label: "transportationValue",
         container: "sliders",
-        color: "#ec7927",
-        max: 50,
-        min: 12,
-        step: 4,
+        color: "#5c3a6e",
+        max: 1000,
+        min: 0,
+        step: 5,
         radius: 200
       });
 
-      var carSlider = new CircularSlider().init({
-        label: "carValue",
+      var foodSlider = new CircularSlider().init({
+        label: "foodValue",
+        container: "sliders",
+        color: "#0072b2",
+        max: 60,
+        min: 12,
+        step: 2,
+        radius: 170
+      });
+
+      var insuranceSlider = new CircularSlider().init({
+        label: "insuranceValue",
         container: "sliders",
         color: "#0c9d1d",
-        max: 20,
+        max: 100,
         min: 0,
         step: 1,
-        radius: 170
+        radius: 140
+      });
+
+      var entertainmentSlider = new CircularSlider().init({
+        label: "entertainmentValue",
+        container: "sliders",
+        color: "#ec7a27",
+        max: 40,
+        min: 0,
+        step: 1,
+        radius: 110
+      });
+
+      var healthSlider = new CircularSlider().init({
+        label: "healthValue",
+        container: "sliders",
+        color: "#f3454a",
+        max: 60,
+        min: 0,
+        step: 1,
+        radius: 80
       });
     </script>
 
     <style>
-      .food .label::before {
-        background-color: #ec7927;
+      .transportation .label::before {
+        background-color: #5c3a6e;
       }
 
-      .car .label::before {
+      .food .label::before {
+        background-color: #0072b2;
+      }
+
+      .insurance .label::before {
         background-color: #0c9d1d;
+      }
+
+      .entertainment .label::before {
+        background-color: #ec7a27;
+      }
+
+      .health .label::before {
+        background-color: #f3454a;
       }
     </style>
   </body>
