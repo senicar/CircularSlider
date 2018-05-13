@@ -4,11 +4,25 @@
   vertical-align: middle;
 }
 
+.sliders {
+  min-height: 400px;
+  min-width: 400px;
+  position: relative;
+}
+
+.sliders svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
 .legend {
   min-height: 200px;
   min-width: 100px;
 }
 
+.legend .value,
 .legend .label {
   display: inline-block;
 }
@@ -16,6 +30,7 @@
 .legend .value {
   font-weight: bold;
   font-size: 2em;
+  min-width: 100px;
 }
 
 .legend .value::before {
