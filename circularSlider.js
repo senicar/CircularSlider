@@ -116,11 +116,52 @@ var CircularSlider = function() {
     pathHolder.setAttribute('transform','translate('+ (pathBg.getPointAtLength(stepLength * step).x) +','+ (pathBg.getPointAtLength(stepLength * step).y) +')');
   };
 
+  var getStepByCurveLength = function(x) {
+    var s = 0;
+
+    if(x > curveLength-10) {
+      s = -1;
+    }
+    else if(x > 10) {
+      s = Math.floor(x / stepLength) + 1;
+    }
+
+    return s;
+  };
+
+  var handleMouseClick = function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    handleEvent(event);
+  };
+
+  var handleEvent = function(event) {
+    var x = Math.floor(svg.getBoundingClientRect().left);
+    var y = Math.floor(svg.getBoundingClientRect().top);
+
+    var origin = new Point(x + options.radius, y + options.radius);
+    var target = new Point(event.clientX - origin.x, -1 * (event.clientY - origin.y));
+
+    var radians = Math.atan2(target.y, target.x) - Math.atan2(0, 1);
+
+    if (target.x < 0 & target.y > 0) {
+      angle = 450 - (radians * 180 / Math.PI);
+    } else {
+      angle = 90 - (radians * 180 / Math.PI);
+    }
+
+    var currentLength = (angle/360) * 2 * Math.PI * circleRadius;
+    currentStep = getStepByCurveLength(currentLength);
+    setSliderStep(currentStep);
+  };
+
   var init = function(newOptions) {
     options = newOptions;
 
     steps = Math.floor((options.max - options.min) / options.step);
     svg = buildGraph();
+
+    svg.addEventListener("click", handleMouseClick, false);
 
     setSliderStep(0);
     document.getElementById(options.container).appendChild(svg);
