@@ -1,3 +1,7 @@
+html,body {
+  height: 100%;
+}
+
 body {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f2f2f2+0,dbdbdb+100 */
   background: #f2f2f2; /* Old browsers */
